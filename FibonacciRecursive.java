@@ -1,29 +1,28 @@
-import java.util.Scanner;
-
-public class FibonacciRecursive {
-    
-    // Recursive method to calculate nth Fibonacci number
-    public static int fibonacci(int n) {
-        if (n <= 0) {
-            throw new IllegalArgumentException("n must be a positive integer");
-        } else if (n == 1 || n == 2) {
-            return 1;
+public class BubbleSort {
+    public static void main(String[] args) {
+        int[] arr = {64, 34, 25, 12, 22, 11, 90};
+        bubbleSort(arr);
+        System.out.println("Sorted array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
         }
-        return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.print("Enter the value of n: ");
-        int n = scanner.nextInt();
-        
-        try {
-            System.out.println("The " + n + "th Fibonacci number is: " + fibonacci(n));
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        boolean swapped;
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            if (!swapped) break;
         }
-        
-        scanner.close();
     }
 }
+
